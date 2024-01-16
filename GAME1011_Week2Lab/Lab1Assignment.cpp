@@ -1,5 +1,8 @@
 #include <iostream>
+#include <string.h>
 #include <string>
+#include "conio.h"
+
 using namespace std;
 
 struct Platforms
@@ -14,11 +17,19 @@ struct Platforms
 
 	}
 
-	void PrintPlatformCount()
+	void PrintPlatformTitle()
 	{
 		for (int i = 0; i < platformCount; i++)
 		{
-			cout << "\n" << platforms[i].platformName;
+			cout << platforms[i].platformName << "\n\n";
+		}
+	}
+
+	void PrintPlatformDetails()
+	{
+		for (int i = 0; i < platformCount; i++)
+		{
+			cout << "\n" << platforms[i].platformManufacturer << endl;
 		}
 	}
 
@@ -28,9 +39,7 @@ struct Platforms
 		this->platformCount = platformCount;
 		this->platformName = platformName;
 		this->platformManufacturer = platformManufacturer;
-	}
-
-	
+	}	
 };
 
 struct Games
@@ -46,11 +55,19 @@ struct Games
 
 	}
 	
-	void PrintGameCount()
+	void PrintGameTitle()
 	{
 		for (int i = 0; i < gameCount; i++)
 		{
-			cout << "\n" << games[i].gameName;
+			cout << games[i].gameName << "\n\n";
+		}
+	}
+
+	void PrintGameDetails()
+	{
+		for (int i = 0; i < gameCount; i++)
+		{
+			cout << "\nMade by:\n" << games[i].gamePublisher << " and " << games[i].gameDeveloper << endl;
 		}
 	}
 
@@ -62,7 +79,6 @@ struct Games
 		this->gamePublisher = gamePublisher;
 		this->gameDeveloper = gameDeveloper;
 	}
-
 };
 
 struct Achievements
@@ -78,12 +94,17 @@ struct Achievements
 
 	}
 
-	void PrintAchievementCount()
+	void PrintAchievementTitle()
 	{
 		for (int i = 0; i < achievementCount; i++)
 		{
-			cout << "\n" << achievements[i].achievementTitle;
+			cout << achievements[i].achievementTitle;
 		}
+	}
+
+	void PrintAchievementDetails()
+	{
+		cout << "\nDescription:\n" << achievementDescription << "\nWith value " <<achievementValue << endl;
 	}
 
 	void SetAchievements(Achievements* achievements, int achievementCount, string achievementTitle, string achievementDescription, int achievementValue)
@@ -94,7 +115,6 @@ struct Achievements
 		this->achievementDescription = achievementDescription;
 		this->achievementValue = achievementValue;
 	}
-
 };
 
 int main()
@@ -102,47 +122,66 @@ int main()
 	string platform;
 	int platformAmount;
 	string manufacturer;
+	cout << "Hello Player, what a great day to create achievements." << endl;
+	cout << "How many platforms are available?" << endl;
+	cin >> platformAmount;
+	cin.ignore(100, '\n');
+	cout << "Please enter the platform used." << endl;
+	getline(cin, platform);
+	cout << "Who is the manufacturer?" << endl;
+	getline(cin, manufacturer);
+	
 	string game;
 	int gameAmount;
 	string publisher;
 	string developer;
+	cout << "How many games are available?" << endl;
+	cin >> gameAmount;
+	cin.ignore(100, '\n');
+	cout << "Please enter the game played." << endl;
+	getline(cin, game);
+	cout << "Who published the game?" << endl;
+	getline(cin, publisher);
+	cout << "Who is the game dev.?" << endl;
+	getline(cin, developer);
+
 	string achievement;
 	int achievementAmount;
 	string description;
 	int value;
-
-	cout << "Hello Player, what a great day to create achievements." << endl;
-	cout << "How many platforms are available?" << endl;
-	cin >> platformAmount;
-	cout << "Please enter the platform used." << endl;
-	cin >> platform;
-	cout << "Who is the manufacturer?" << endl;
-	cin >> manufacturer;
-	cout << "How many games are available?" << endl;
-	cin >> gameAmount;
-	cout << "Please enter the game played." << endl;
-	cin >> game;
-	cout << "Who published the game?" << endl;
-	cin >> publisher;
-	cout << "Who is the game dev.?" << endl;
-	cin >> developer;
 	cout << "How many achievemnts are there?" << endl;
 	cin >> achievementAmount;
+	cin.ignore(100, '\n');
 	cout << "Enter the achevement you would like to create." << endl;
-	cin >> achievement;
-	cout << "What description would you like to give the achievement?" << endl;
-	cin >> description;
-	cout << "What is the value of this achievement?" << endl;
-	cin >> value;
+	getline(cin, achievement);
+
+	cout << "Press a key to continue.";
+	_getch();
+	system("cls");
 
 	Platforms* platforms = new Platforms[platformAmount];
 	Games* games = new Games[gameAmount];
 	Achievements* achievements = new Achievements[achievementAmount];
+	
 	platforms->SetPlatforms(platforms, platformAmount, platform, manufacturer);
+	cout << "The chosen platform is:" << endl;
+	platforms->PrintPlatformTitle();
+	
 	games->SetGames(games, gameAmount, game, publisher, developer);
+	cout << "In the game:" << endl;
+	games->PrintGameTitle();
+
+	cout << "What description would you like to give " << achievement << "." << endl;
+	getline(cin, description);
+	cout << "What is the value of this achievement?" << endl;
+	cin >> value;
+	cout << "Press a key to continue.";
+	_getch(); 
+	system("cls");
+
 	achievements->SetAchievements(achievements, achievementAmount, achievement, description, value);
-	platforms->PrintPlatformCount();
-	games->PrintGameCount();
-	achievements->PrintAchievementCount();
+	cout << "You added the following achievement to " << game << " on " << platform << "." << endl;
+	achievements->PrintAchievementTitle();
+	achievements->PrintAchievementDetails();
 
 }
