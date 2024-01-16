@@ -75,24 +75,24 @@ private:
 	int officesCount;
 };
 
-int main()
-{
-	int serviceCount;
-	int officeCount;
-	int packageCount;
-	cout << "Welcome to mail simulator 2024" << endl;
-	cout << "Please enter the amount of mail services you wish to create." << endl;
-	cin >> serviceCount;
-	cout << "Please enter the amount of post offices you wish to create." << endl;
-	cin >> officeCount;
-	cout << "Please enter the amount of packages you wish to create." << endl;
-	cin >> packageCount;
-
-	//dynamically allocate memory using the "new" keyword, allowing for user to input size of array
-	Package* packages = new Package[packageCount];
-	PostOffice* offices = new PostOffice[officeCount];
-	offices->SetPackages(packages, packageCount);
-	MailService* services = new MailService[serviceCount];
-	services->SetOffice(offices, officeCount);
-	offices->PrintPackages();
-}
+//int main()
+//{
+//	int serviceCount;
+//	int officeCount;
+//	int packageCount;
+//	cout << "Welcome to mail simulator 2024" << endl;
+//	cout << "Please enter the amount of mail services you wish to create." << endl;
+//	cin >> serviceCount;
+//	cout << "Please enter the amount of post offices you wish to create." << endl;
+//	cin >> officeCount;
+//	cout << "Please enter the amount of packages you wish to create." << endl;
+//	cin >> packageCount;
+//
+//	//dynamically allocate memory using the "new" keyword, allowing for user to input size of array
+//	Package* packages = new Package[packageCount];
+//	PostOffice* offices = new PostOffice[officeCount];
+//	offices->SetPackages(packages, packageCount);
+//	MailService* services = new MailService[serviceCount];
+//	services->SetOffice(offices, officeCount);
+//	offices->PrintPackages();
+//}

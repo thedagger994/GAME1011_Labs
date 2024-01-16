@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Lab1Assignment.cpp" />
     <ClCompile Include="MailService.cpp" />
     <ClCompile Include="StaticExample.cpp" />
     <ClCompile Include="ThisExamplecpp.cpp" />
