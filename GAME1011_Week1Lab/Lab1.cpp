@@ -78,7 +78,8 @@ private:
 
 int main()
 {
-    string ps5Games[5] = { "Call of Duty", "Horizon Forbidden West", "God of War 2", "Spiderman 2", "Rocket League" };
+    const int NUM_GAMES = 5;
+    string ps5Games[NUM_GAMES] = { "Call of Duty", "Horizon Forbidden West", "God of War 2", "Spiderman 2", "Rocket League" };
 
     Platform ps5("Playstation 5", "Sony", ps5Games);
 
@@ -124,24 +125,34 @@ int main()
         Game("Spiderman 2", "Sony", "Insomniac Games", spdAchievements),
         Game("Rocket League", "Psyonix", "Psyonix", rlAchievements) };
 
-    // Display the list of games
-    cout << "Games available:\n";
-    for (int i = 0; i < 5; i++)
-    {
-        cout << i + 1 << ". " << ps5Games[i] << "\n";
-    }
+    while (true) {
+        // Display the list of games
+        cout << "\n\nGames available:\n";
+        for (int i = 0; i < NUM_GAMES; i++) {
+            cout << i + 1 << ". " << ps5Games[i] << "\n";
+        }
 
-    // Player picks a game
-    int selectedGame;
-    cout << "Enter the number of the game you want to view: ";
-    if (!(cin >> selectedGame) || selectedGame < 1 || selectedGame > 5)
-    {
-        cout << "Invalid selection.\n";
-        return 1; // Exit with an error code
-    }
+        // Player picks a game
+        int selectedGame;
+        cout << "Enter the number of the game you want to view (or enter 0 to exit): ";
+        if (!(cin >> selectedGame) || cin.fail()) {
+            cout << "Invalid input. Exiting.\n";
+            return 1; // Exit with an error code
+        }
 
-    // Display the details of the selected game
-    games[selectedGame - 1].displayGameDetails();
+        if (selectedGame == 0) {
+            cout << "Exiting program. Goodbye!\n";
+            break; // Exit the loop
+        }
+
+        if (selectedGame < 1 || selectedGame > NUM_GAMES) {
+            cout << "Invalid selection. Please try again.\n";
+            continue; // Go to the next iteration of the loop
+        }
+
+        // Display the details of the selected game
+        games[selectedGame - 1].displayGameDetails();
+    }
 
     return 0;
 }
