@@ -127,14 +127,14 @@ int main()
 
     while (true) {
         // Display the list of games
-        cout << "\n\nGames available:\n";
+        cout << "\n\nGames available:\n\n";
         for (int i = 0; i < NUM_GAMES; i++) {
             cout << i + 1 << ". " << ps5Games[i] << "\n";
         }
 
         // Player picks a game
         int selectedGame;
-        cout << "Enter the number of the game you want to view (or enter 0 to exit): ";
+        cout << "\nEnter the number of the game you want to view (or enter 0 to exit): ";
         if (!(cin >> selectedGame) || cin.fail()) {
             cout << "Invalid input. Exiting.\n";
             return 1; // Exit with an error code
