@@ -180,7 +180,7 @@ void createNewAchievement(vector<Achievement>& achievementsList)
     cout << "New achievement created successfully!\n";
 }
 
-void viewPlatformDetails(const vector<Platform>& platforms)
+void viewPlatformDetails(const vector<Platform>& platforms, vector<Game>& gameList)
 {
     cout << "Available platforms:\n";
     for (size_t i = 0; i < platforms.size(); i++)
@@ -197,6 +197,16 @@ void viewPlatformDetails(const vector<Platform>& platforms)
     }
 
     platforms[platformIndex - 1].displayPlatformDetails();
+
+    int gameIndex;
+    cout << "Select a game from the platform (enter the number): ";
+    if (!(cin >> gameIndex) || gameIndex < 1 || gameIndex > static_cast<int>(gameList.size()))
+    {
+        cout << "Invalid game selection.\n";
+        return;
+    }
+
+    gameList[gameIndex - 1].displayGameDetails();
 }
 
 void viewGameDetails(const vector<Game>& gameList)
@@ -254,6 +264,7 @@ int main()
     string ps5Games[5] = { "Call of Duty", "Horizon Forbidden West", "God of War 2", "Spiderman 2", "Rocket League" };
 
     Platform ps5("Playstation 5", "Sony", vector<string>(ps5Games, ps5Games + sizeof(ps5Games) / sizeof(ps5Games[0])));
+
     Achievement codAchievements[] =
     {
         {"First Blood", "Achieve your first kill", 10},
@@ -304,13 +315,11 @@ int main()
     vector<Game> gameList;
     vector<Achievement> achievementsList;
     vector<Achievement> achievements;
-
     vector<Achievement> codAchievementsVec(codAchievements, codAchievements + sizeof(codAchievements) / sizeof(Achievement));
     vector<Achievement> hzdAchievementsVec(hzdAchievements, hzdAchievements + sizeof(hzdAchievements) / sizeof(Achievement));
     vector<Achievement> dmcAchievementsVec(dmcAchievements, dmcAchievements + sizeof(dmcAchievements) / sizeof(Achievement));
     vector<Achievement> spdAchievementsVec(spdAchievements, spdAchievements + sizeof(spdAchievements) / sizeof(Achievement));
     vector<Achievement> rlAchievementsVec(rlAchievements, rlAchievements + sizeof(rlAchievements) / sizeof(Achievement));
-
 
     Game codGame("Call of Duty", "Activision", "Infinity Ward", codAchievementsVec);
     Game hzdGame("Horizon Forbidden West", "Sony", "Guerrilla Games", hzdAchievementsVec);
@@ -318,15 +327,14 @@ int main()
     Game spdGame("Spiderman 2", "Sony", "Insomniac Games", spdAchievementsVec);
     Game rlGame("Rocket League", "Psyonix", "Psyonix", rlAchievementsVec);
 
+    platforms.push_back(ps5);
 
-    // Adding Games to the gameList vector
     gameList.push_back(codGame);
     gameList.push_back(hzdGame);
     gameList.push_back(dmcGame);
     gameList.push_back(spdGame);
     gameList.push_back(rlGame);
 
-    // Adding Achievements to the achievements vector
     achievements.insert(achievements.end(), codAchievementsVec.begin(), codAchievementsVec.end());
     achievements.insert(achievements.end(), hzdAchievementsVec.begin(), hzdAchievementsVec.end());
     achievements.insert(achievements.end(), dmcAchievementsVec.begin(), dmcAchievementsVec.end());
@@ -356,7 +364,7 @@ int main()
             break;
 
         case 4:
-            viewPlatformDetails(platforms);
+            viewPlatformDetails(platforms, gameList);
             break;
 
         case 5:
