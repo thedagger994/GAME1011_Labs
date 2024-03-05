@@ -1,0 +1,46 @@
+Class: GAME OBJECT (Pure Abstract)
+Variables:
+
+Functions: 
+	NormalAttack()<-Pure Virtual Function
+
+
+Class: PLAYER (Abstract)
+Variables:
+	Name
+	Health
+
+Functions:
+	NormalAttack()
+	SpecialAttack()<-Pure Virtual Function
+	Accessors
+	Mutators
+
+
+Class: ENEMY (Abstract)
+Variables:
+	Health
+
+Functions:
+	NormalAttack()
+	TauntPlayer()<-Pure Virtual Function
+	Accessors
+	Mutators
+
+
+Class: WIZARD & Class: KNIGHT (Under PLAYER)
+Variables:
+	Special Attack Name (Static)
+	Special Attack Amount
+
+Functions:
+	SpecialAttack()
+
+
+Class: ORC & Class: UNDEAD (Under ENEMY)
+Variables:
+	Species Name (Static)
+	Array of Taunts
+
+Functions:
+	TauntPlayer()
