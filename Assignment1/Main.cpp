@@ -11,23 +11,25 @@ int main ()
 {
     string type;
     string Name;
-    int Health = 100;
+    int Health;
     cout << "Hello Player Welcome to the game!" << endl;
     cout << "Would you like to play as a Wizard or Knight?" << endl;
-    cout << "   Enter 1 for Wizard and 2 for Knight! " << endl;
+    cout << "   Enter 'Wizard' or 'Knight' to continue" << endl;
     cin >> type;
     srand (static_cast<int>(time (NULL)));
     int randNumber = rand () % 10;
 
-    if (type == "1" && randNumber > 5)
+    if (type == "Wizard" && randNumber > 5)
     {
         Player* Hero1 = new Wizard;
         Enemy* Enemy1 = new Undead;
         cout << "What is your name?" << endl;
         cin >> Name;
+        cout << "What is your health?" << endl;
+        cin >> Health;
         Hero1->setName (Name);
         Hero1->setHealth (Health);
-        cout << "Player Type: " << type << endl;
+        cout << "Wizard!" << endl;
         cout << "Player name: " << Hero1->getName () << endl;
         cout << "Player health: " << Health << endl;
         cout << "Are you ready to witness a great Battle?" << endl;
@@ -46,15 +48,17 @@ int main ()
         cout << Undead::SpeciesName << " Has died!! " << endl;
         cout << "Hero " << Hero1->getName () << " has won! " << endl;
     }
-    else if (type == "2" && randNumber <= 5)
+    else if (type == "Knight" && randNumber <= 5)
     {
         Player* Hero1 = new Knight;
         Enemy* Enemy1 = new Undead;
         cout << "What is your name?" << endl;
         cin >> Name;
+        cout << "What is your health?" << endl;
+        cin >> Health;
         Hero1->setName (Name);
         Hero1->setHealth (Health);
-        cout << "Player Type: " << type << endl;
+        cout << "Knight!" << endl;
         cout << "Player name: " << Hero1->getName () << endl;
         cout << "Player health: " << Health << endl;
         cout << "Are you ready to witness a great Battle?" << endl;
@@ -73,12 +77,14 @@ int main ()
         cout << Undead::SpeciesName << " Has died!! " << endl;
         cout << "Hero " << Hero1->getName () << " has won! " << endl;
     }
-    else if (type == "1" && randNumber <= 5)
+    else if (type == "Wizard" && randNumber <= 5)
     {
         Player* Hero1 = new Wizard;
         Enemy* Enemy1 = new Orc;
         cout << "What is your name?" << endl;
         cin >> Name;
+        cout << "What is your health?" << endl;
+        cin >> Health;
         Hero1->setName (Name);
         Hero1->setHealth (Health);
         cout << "Player Type: " << type << endl;
@@ -100,12 +106,14 @@ int main ()
         cout << Undead::SpeciesName << " Has died!! " << endl;
         cout << "Hero " << Hero1->getName () << " has won! " << endl;
     }
-    else if (type == "2" && randNumber > 5)
+    else if (type == "Knight" && randNumber > 5)
     {
         Player* Hero1 = new Knight;
         Enemy* Enemy1 = new Orc;
         cout << "What is your name?" << endl;
         cin >> Name;
+        cout << "What is your health?" << endl;
+        cin >> Health;
         Hero1->setName (Name);
         Hero1->setHealth (Health);
         cout << "Player Type: " << type << endl;
