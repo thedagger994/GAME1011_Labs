@@ -11,7 +11,7 @@ int main ()
 {
     string type;
     string Name;
-    int Health;
+    int Health = 100;
     cout << "Hello Player Welcome to the game!" << endl;
     cout << "Would you like to play as a Wizard or Knight?" << endl;
     cout << "   Enter 'Wizard' or 'Knight' to continue" << endl;
@@ -25,8 +25,6 @@ int main ()
         Enemy* Enemy1 = new Undead;
         cout << "What is your name?" << endl;
         cin >> Name;
-        cout << "What is your health?" << endl;
-        cin >> Health;
         Hero1->setName (Name);
         Hero1->setHealth (Health);
         cout << "Wizard!" << endl;
@@ -54,8 +52,6 @@ int main ()
         Enemy* Enemy1 = new Undead;
         cout << "What is your name?" << endl;
         cin >> Name;
-        cout << "What is your health?" << endl;
-        cin >> Health;
         Hero1->setName (Name);
         Hero1->setHealth (Health);
         cout << "Knight!" << endl;
@@ -83,8 +79,6 @@ int main ()
         Enemy* Enemy1 = new Orc;
         cout << "What is your name?" << endl;
         cin >> Name;
-        cout << "What is your health?" << endl;
-        cin >> Health;
         Hero1->setName (Name);
         Hero1->setHealth (Health);
         cout << "Player Type: " << type << endl;
@@ -112,8 +106,6 @@ int main ()
         Enemy* Enemy1 = new Orc;
         cout << "What is your name?" << endl;
         cin >> Name;
-        cout << "What is your health?" << endl;
-        cin >> Health;
         Hero1->setName (Name);
         Hero1->setHealth (Health);
         cout << "Player Type: " << type << endl;
