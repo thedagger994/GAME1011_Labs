@@ -1,0 +1,4 @@
+﻿  main.cpp
+C:\Users\theda\source\repos\GAME1011_Labs\GAME1011_LabExercise4\main.cpp(29,49): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\theda\source\repos\GAME1011_Labs\GAME1011_LabExercise4\main.cpp(37,77): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  GAME1011_LabExercise4.vcxproj -> C:\Users\theda\source\repos\GAME1011_Labs\GAME1011_LabExercise4\x64\Debug\GAME1011_LabExercise4.exe
